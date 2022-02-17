@@ -1,7 +1,13 @@
 package br.com.fiap.revisao.main;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.fiap.revisao.model.Alimento;
+import br.com.fiap.revisao.model.Fornecedor;
 import br.com.fiap.revisao.model.Organico;
+import br.com.fiap.revisao.model.OrigemAlimento;
 
 public class Teste {
 
@@ -39,6 +45,25 @@ public class Teste {
 		
 		System.out.println(alface);
 		
-	}
-	
-}
+		//Criar uma lista de fornecedores
+		List<Fornecedor> fornecedores = new ArrayList<Fornecedor>();
+		
+		//Adicionar dois fornecedores
+		fornecedores.add(new Fornecedor(1, "Alimentos LTDA"));
+		fornecedores.add(new Fornecedor(2, "Dois irmãos LTDA"));
+		
+		//Criar um alimento com todos os dados
+		Alimento miojo = new Alimento("Miojo", true, 100, 
+										LocalDate.of(2024, 1, 18), OrigemAlimento.VEGETAL, fornecedores);
+		
+		//Exibir os dados do alimento
+		System.out.println(miojo);
+		
+		//Exibir os dados dos fornecedores do alimento
+		System.out.println("FORNECEDORES");
+		for (Fornecedor item : miojo.getFornecedores()) {
+			System.out.println(item);
+		}
+		
+	}//main
+}//class

@@ -1,5 +1,9 @@
 package br.com.fiap.revisao.model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
 public class Alimento {
 	
 	//Modificadores de acesso
@@ -13,6 +17,13 @@ public class Alimento {
 	private String nome;
 	private boolean salgado;
 	protected float valorCalorico;
+	
+	private LocalDate dataValidade;
+	
+	//Define a origem
+	private OrigemAlimento origemAlimento;
+	
+	private List<Fornecedor> fornecedores;
 	
 	//Construtores -> métodos especiais utilizados na instaciação da classe
 	//1- Tem o mesmo nome da classe
@@ -30,6 +41,14 @@ public class Alimento {
 		this.valorCalorico = valorCalorico;
 	}
 	
+	public Alimento(String nome, boolean salgado, float valorCalorico, 
+			LocalDate dataValidade, OrigemAlimento origemAlimento, List<Fornecedor> fornecedores) {
+		this(nome, salgado, valorCalorico);
+		this.dataValidade = dataValidade;
+		this.origemAlimento = origemAlimento;
+		this.fornecedores = fornecedores;
+	}
+	
 	//public Alimento() {}
 	
 	//Métodos
@@ -37,7 +56,11 @@ public class Alimento {
 	//Sobrescrever o método toString() para exibir os dados do alimento
 	@Override
 	public String toString() {
-		return "Nome: " + nome + (salgado?" Salgado":" Doce") + " Valor calórico: " + valorCalorico;
+		DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		return "Nome: " + nome + (salgado?" Salgado":" Doce") 
+				+ " Valor calórico: " + valorCalorico 
+				+ " Validade: " + (dataValidade==null?"Nda":dataValidade.format(formatador)) +
+				" Origem: " + origemAlimento;
 	}
 	
 	public double calcularValorCalorico(int quantidade) {
@@ -91,6 +114,30 @@ public class Alimento {
 
 	public void setValorCalorico(float valorCalorico) {
 		this.valorCalorico = valorCalorico;
+	}
+
+	public OrigemAlimento getOrigemAlimento() {
+		return origemAlimento;
+	}
+
+	public void setOrigemAlimento(OrigemAlimento origemAlimento) {
+		this.origemAlimento = origemAlimento;
+	}
+
+	public List<Fornecedor> getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(List<Fornecedor> fornecedores) {
+		this.fornecedores = fornecedores;
+	}
+
+	public LocalDate getDataValidade() {
+		return dataValidade;
+	}
+
+	public void setDataValidade(LocalDate dataValidade) {
+		this.dataValidade = dataValidade;
 	}
 	
 }
