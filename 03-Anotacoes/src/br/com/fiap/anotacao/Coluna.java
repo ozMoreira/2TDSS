@@ -11,6 +11,7 @@ import java.lang.annotation.Target;
 //Target -> define onde a anotação pode ser utilizada
 @Target({ElementType.FIELD, ElementType.METHOD}) //Atributos
 public @interface Coluna {
+	
 	String nome(); //Parâmetro da anotação
 	boolean chave() default false; //valor padrão, o parâmetro não é obrigatório
 	int tamanho() default 0;

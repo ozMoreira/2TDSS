@@ -1,0 +1,14 @@
+Banco:
+
+TB_MUSICA
+-----
+cd_musica number(10,0) (PK) not null
+nm_musica varchar2(50) not null
+dt_lancamento timestamp not null
+vl_duracao float
+nm_album varchar2(40) not null
+st_instrumental number
+dt_cadastro date
+vl_faturamento number(11,2)
+
+Sequence: SQ_TB_MUSICA
