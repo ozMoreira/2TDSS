@@ -9,8 +9,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
 @Entity
@@ -27,6 +30,7 @@ public class Musica {
 	@Column(name="nm_musica", length = 50, nullable = false, unique = true) //nullable -> pode ser nulo?
 	private String nome;
 	
+	@Temporal(TemporalType.DATE) //Define que será gravado somente a data no banco
 	@Column(name="dt_lancamento", nullable = false)
 	private Calendar dataLancamento;
 	
@@ -47,5 +51,101 @@ public class Musica {
 	
 	@Transient //Idade não será um campo na tabela
 	private Integer idade;
+	
+	@Lob //Define um campo do tipo blob, para arquivos
+	@Column(name="fl_capa_album")
+	private byte[] capaAlbum;
+	
+	//@Enumerated(EnumType.STRING) //Será gravado o texto ao invés da posição da constante
+	@Column(name="ds_genero", length = 20)
+	private GeneroMusica genero;
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Calendar getDataLancamento() {
+		return dataLancamento;
+	}
+
+	public void setDataLancamento(Calendar dataLancamento) {
+		this.dataLancamento = dataLancamento;
+	}
+
+	public Float getDuracao() {
+		return duracao;
+	}
+
+	public void setDuracao(Float duracao) {
+		this.duracao = duracao;
+	}
+
+	public String getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(String album) {
+		this.album = album;
+	}
+
+	public Boolean getInstrumental() {
+		return instrumental;
+	}
+
+	public void setInstrumental(Boolean instrumental) {
+		this.instrumental = instrumental;
+	}
+
+	public LocalDate getDataCadastro() {
+		return dataCadastro;
+	}
+
+	public void setDataCadastro(LocalDate dataCadastro) {
+		this.dataCadastro = dataCadastro;
+	}
+
+	public BigDecimal getFaturamento() {
+		return faturamento;
+	}
+
+	public void setFaturamento(BigDecimal faturamento) {
+		this.faturamento = faturamento;
+	}
+
+	public Integer getIdade() {
+		return idade;
+	}
+
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+
+	public byte[] getCapaAlbum() {
+		return capaAlbum;
+	}
+
+	public void setCapaAlbum(byte[] capaAlbum) {
+		this.capaAlbum = capaAlbum;
+	}
+
+	public GeneroMusica getGenero() {
+		return genero;
+	}
+
+	public void setGenero(GeneroMusica genero) {
+		this.genero = genero;
+	}
 	
 }
