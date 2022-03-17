@@ -6,6 +6,8 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -57,6 +59,7 @@ public class Musica {
 	private byte[] capaAlbum;
 	
 	//@Enumerated(EnumType.STRING) //Será gravado o texto ao invés da posição da constante
+	@Enumerated(EnumType.STRING)
 	@Column(name="ds_genero", length = 20)
 	private GeneroMusica genero;
 

@@ -15,7 +15,7 @@
 				create -> Apaga e cria as tabelas de acordo com as classes mapeadas
 				validate -> Validar se as tabelas estão de acordo com as classes mapeadas		
 			 -->
-			<property name="hibernate.hbm2ddl.auto" value="update"/>
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
 			
 			<!-- Dialeto, criar as queries nativas do banco oracle -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect"/>

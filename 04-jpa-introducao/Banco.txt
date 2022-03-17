@@ -28,7 +28,7 @@ st_cantor number(1,0) (Boolean no java)
 st_musico number(1,0) (Boolean no java)
 nr_musicas number(10,0)
 
-Atributo Integer idade que sÃ³ existe no Java
+Atributo Integer idade que só existe no Java
 
 Sequence: SQ_TB_ARTISTA
 
