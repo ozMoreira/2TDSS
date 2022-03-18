@@ -65,6 +65,13 @@ public class Artista {
 		this.musico = musico;
 		this.numeroMusicas = numeroMusicas;
 	}
+	
+	public Artista(Integer codigo, String nome, LocalDate dataNascimento, byte[] foto, 
+			GeneroMusica genero, Boolean cantor,
+			Boolean musico, Integer numeroMusicas) {
+		this(nome, dataNascimento, foto, genero, cantor, musico, numeroMusicas);
+		this.codigo = codigo;
+	}
 
 	public Integer getCodigo() {
 		return codigo;

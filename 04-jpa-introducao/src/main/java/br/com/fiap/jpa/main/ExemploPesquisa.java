@@ -1,42 +1,35 @@
 package br.com.fiap.jpa.main;
 
-import java.time.LocalDate;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
 import br.com.fiap.jpa.entity.Artista;
-import br.com.fiap.jpa.entity.GeneroMusica;
 
-public class ExemploCadastro {
-
+public class ExemploPesquisa {
+	
 	public static void main(String[] args) {
 		//Obter uma fabrica
 		EntityManagerFactory fabrica = Persistence.createEntityManagerFactory("oracle");
 		
 		//Obter um entity manager
 		EntityManager em = fabrica.createEntityManager();
-
-		//Criar um artista sem o código (estado novo)
-		Artista artista = new Artista("Michael Jackson", LocalDate.of(1990, 2, 10), 
-													null, GeneroMusica.POP, true, true, 80);
 		
-		//Persist
-		em.persist(artista);
+		//Pesquisar um artista pela PK
+		Artista artista = em.find(Artista.class, 1); //(Classe, PK)
 		
-		//Commit para dar o Insert
-		em.getTransaction().begin();
-		em.getTransaction().commit();
+		//Exibir o nome do artista
+		System.out.println(artista.getNome());
 		
-		artista.setNome("Luan");
+		//Alterar o nome do artista
+		artista.setNome("Tirulipa");
 		
-		//Commit para dar o Update
+		//Commit
 		em.getTransaction().begin();
 		em.getTransaction().commit();
 		
 		//Fechar
 		em.close();
 		fabrica.close();
+		
 	}
 }
