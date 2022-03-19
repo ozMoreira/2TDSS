@@ -24,7 +24,14 @@ public class ExemploAtualizacao {
 				null, GeneroMusica.ROCK, true, true, 120);
 		
 		//Utilizar o método merge
-		em.merge(artista);
+		Artista copia = em.merge(artista); //Retorna a cópia da entidade gerenciada
+		
+		//Commit
+		em.getTransaction().begin();
+		em.getTransaction().commit();
+		
+		//Alterar algum valor do artista
+		copia.setNome("Jonh");
 		
 		//Commit
 		em.getTransaction().begin();
@@ -33,6 +40,5 @@ public class ExemploAtualizacao {
 		//Fechar
 		em.close();
 		fabrica.close();
-		
 	}
 }
