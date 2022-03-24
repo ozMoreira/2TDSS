@@ -10,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.persistence.PostLoad;
+import javax.persistence.PrePersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -71,6 +73,18 @@ public class Artista {
 			Boolean musico, Integer numeroMusicas) {
 		this(nome, dataNascimento, foto, genero, cantor, musico, numeroMusicas);
 		this.codigo = codigo;
+	}
+	
+	//Método que é executado automáticamente
+	@PrePersist //antes de cadastrar
+	public void executar() {
+		System.out.println("Cadastrando um artista...");
+	}
+	
+	@PostLoad //depois de carregar o objeto
+	public void carregar() {
+		idade = 21;
+		System.out.println("Carregando um artista...");
 	}
 
 	public Integer getCodigo() {

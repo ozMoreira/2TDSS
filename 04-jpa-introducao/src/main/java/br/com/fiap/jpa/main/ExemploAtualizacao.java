@@ -20,7 +20,7 @@ public class ExemploAtualizacao {
 		EntityManager em = fabrica.createEntityManager();
 		
 		//Instanciar um artista com uma PK (Estado detached)
-		Artista artista = new Artista(1, "Eric Johnson", LocalDate.of(1965, Month.AUGUST, 10),
+		Artista artista = new Artista(2131, "Eric Johssdfgsdfgnson", LocalDate.of(1965, Month.AUGUST, 10),
 				null, GeneroMusica.ROCK, true, true, 120);
 		
 		//Utilizar o método merge
